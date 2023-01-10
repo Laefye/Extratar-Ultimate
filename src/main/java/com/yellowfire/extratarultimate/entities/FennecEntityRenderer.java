@@ -13,6 +13,9 @@ public class FennecEntityRenderer extends MobEntityRenderer<FennecEntity, Fennec
 
     @Override
     public Identifier getTexture(FennecEntity entity) {
+        if (entity.getName().getString().equalsIgnoreCase("Faradey")) {
+            return ExtratarUltimate.id("textures/entity/fennec_faradey.png");
+        }
         return ExtratarUltimate.id("textures/entity/fennec.png");
     }
 }
