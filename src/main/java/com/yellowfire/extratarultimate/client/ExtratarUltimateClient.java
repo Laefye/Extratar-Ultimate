@@ -23,7 +23,7 @@ public class ExtratarUltimateClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        Entities.clientRegister(ExtratarUltimate::id);
+        Entities.clientRegister();
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), Registries.ITEM.get(ExtratarUltimate.id("lightelet")));
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null ? BiomeColors.getGrassColor(world, pos) : FoliageColors.getDefaultColor(), Blocks.LIGHTELET);
         BlockRenderLayerMap.INSTANCE.putBlock(Blocks.TELDER_TRAPDOOR, RenderLayer.getCutout());

@@ -1,5 +1,6 @@
 package com.yellowfire.extratarultimate.blocks;
 
+import com.yellowfire.extratarultimate.ExtratarUltimate;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -448,59 +449,59 @@ public class Blocks {
             .luminance(3)
     );
 
-    public static void register(Function<String, Identifier> id) {
-        registerBlock(EARTH_CRYSTAL_ORE, "earth_crystal_ore", id);
-        registerBlock(NETHER_CRYSTAL_ORE, "nether_crystal_ore", id);
-        registerBlock(END_CRYSTAL_ORE, "end_crystal_ore", id);
-        registerBlock(TELDER_STEEL_ORE, "telder_steel_ore", id);
-        registerBlock(EARTH_CRYSTAL_BLOCK, "earth_crystal_block", id);
-        registerBlock(NETHER_CRYSTAL_BLOCK, "nether_crystal_block", id);
-        registerBlock(END_CRYSTAL_BLOCK, "end_crystal_block", id);
-        registerBlock(TELDER_STEEL_BLOCK, "telder_steel_block", id);
-        registerBlock(MECHANICAL_STRUCTURE, "mechanical_structure", id);
-        registerBlock(ETHERSOAKED_STONE, "ethersoaked_stone", id);
-        registerBlock(ETHERSOAKED_STONE_STAIRS, "ethersoaked_stone_stairs", id);
-        registerBlock(ETHERSOAKED_STONE_SLAB, "ethersoaked_stone_slab", id);
-        registerBlock(ETHERSOAKED_STONE_WALL, "ethersoaked_stone_wall", id);
-        registerBlock(ETHERSOAKED_COBBLESTONE, "ethersoaked_cobblestone", id);
-        registerBlock(MOSSY_ETHERSOAKED_COBBLESTONE, "mossy_ethersoaked_cobblestone", id);
-        registerBlock(ETHERSOAKED_COBBLESTONE_STAIRS, "ethersoaked_cobblestone_stairs", id);
-        registerBlock(ETHERSOAKED_COBBLESTONE_SLAB, "ethersoaked_cobblestone_slab", id);
-        registerBlock(ETHERSOAKED_COBBLESTONE_WALL, "ethersoaked_cobblestone_wall", id);
-        registerBlock(ETHERSOAKED_STONE_BRICKS, "ethersoaked_stone_bricks", id);
-        registerBlock(ETHERSOAKED_STONE_BRICK_STAIRS, "ethersoaked_stone_brick_stairs", id);
-        registerBlock(ETHERSOAKED_STONE_BRICK_SLAB, "ethersoaked_stone_brick_slab", id);
-        registerBlock(ETHERSOAKED_STONE_BRICK_WALL, "ethersoaked_stone_brick_wall", id);
-        registerBlock(MOSSY_ETHERSOAKED_STONE_BRICKS, "mossy_ethersoaked_stone_bricks", id);
-        registerBlock(POLISHED_ETHERSOAKED_STONE, "polished_ethersoaked_stone", id);
-        registerFlammableBlock(TELDER_LOG, "telder_log", id);
-        registerFlammableBlock(STRIPPED_TELDER_LOG, "stripped_telder_log", id);
-        registerFlammableBlock(TELDER_WOOD, "telder_wood", id);
-        registerFlammableBlock(STRIPPED_TELDER_WOOD, "stripped_telder_wood", id);
-        registerFlammableBlock(TELDER_WOODEN_PLANKS, "telder_wooden_planks", id);
-        registerFlammableBlock(TELDER_SLAB, "telder_slab", id);
-        registerFlammableBlock(TELDER_STAIRS, "telder_stairs", id);
-        registerFlammableBlock(TELDER_FENCE, "telder_fence", id);
-        registerFlammableBlock(TELDER_FENCE_GATE, "telder_fence_gate", id);
-        registerFlammableBlock(TELDER_DOOR, "telder_door", id);
-        registerFlammableBlock(TELDER_TRAPDOOR, "telder_trapdoor", id);
-        registerBlock(SEALED_TELDER_JAR, "sealed_telder_jar", id); // Изменить лут его
-        TELDER_JAR_ENTITY_TYPE = registerBlockEntity(TELDER_JAR, "telder_jar", id,
+    public static void register() {
+        registerBlock(EARTH_CRYSTAL_ORE, "earth_crystal_ore");
+        registerBlock(NETHER_CRYSTAL_ORE, "nether_crystal_ore");
+        registerBlock(END_CRYSTAL_ORE, "end_crystal_ore");
+        registerBlock(TELDER_STEEL_ORE, "telder_steel_ore");
+        registerBlock(EARTH_CRYSTAL_BLOCK, "earth_crystal_block");
+        registerBlock(NETHER_CRYSTAL_BLOCK, "nether_crystal_block");
+        registerBlock(END_CRYSTAL_BLOCK, "end_crystal_block");
+        registerBlock(TELDER_STEEL_BLOCK, "telder_steel_block");
+        registerBlock(MECHANICAL_STRUCTURE, "mechanical_structure");
+        registerBlock(ETHERSOAKED_STONE, "ethersoaked_stone");
+        registerBlock(ETHERSOAKED_STONE_STAIRS, "ethersoaked_stone_stairs");
+        registerBlock(ETHERSOAKED_STONE_SLAB, "ethersoaked_stone_slab");
+        registerBlock(ETHERSOAKED_STONE_WALL, "ethersoaked_stone_wall");
+        registerBlock(ETHERSOAKED_COBBLESTONE, "ethersoaked_cobblestone");
+        registerBlock(MOSSY_ETHERSOAKED_COBBLESTONE, "mossy_ethersoaked_cobblestone");
+        registerBlock(ETHERSOAKED_COBBLESTONE_STAIRS, "ethersoaked_cobblestone_stairs");
+        registerBlock(ETHERSOAKED_COBBLESTONE_SLAB, "ethersoaked_cobblestone_slab");
+        registerBlock(ETHERSOAKED_COBBLESTONE_WALL, "ethersoaked_cobblestone_wall");
+        registerBlock(ETHERSOAKED_STONE_BRICKS, "ethersoaked_stone_bricks");
+        registerBlock(ETHERSOAKED_STONE_BRICK_STAIRS, "ethersoaked_stone_brick_stairs");
+        registerBlock(ETHERSOAKED_STONE_BRICK_SLAB, "ethersoaked_stone_brick_slab");
+        registerBlock(ETHERSOAKED_STONE_BRICK_WALL, "ethersoaked_stone_brick_wall");
+        registerBlock(MOSSY_ETHERSOAKED_STONE_BRICKS, "mossy_ethersoaked_stone_bricks");
+        registerBlock(POLISHED_ETHERSOAKED_STONE, "polished_ethersoaked_stone");
+        registerFlammableBlock(TELDER_LOG, "telder_log");
+        registerFlammableBlock(STRIPPED_TELDER_LOG, "stripped_telder_log");
+        registerFlammableBlock(TELDER_WOOD, "telder_wood");
+        registerFlammableBlock(STRIPPED_TELDER_WOOD, "stripped_telder_wood");
+        registerFlammableBlock(TELDER_WOODEN_PLANKS, "telder_wooden_planks");
+        registerFlammableBlock(TELDER_SLAB, "telder_slab");
+        registerFlammableBlock(TELDER_STAIRS, "telder_stairs");
+        registerFlammableBlock(TELDER_FENCE, "telder_fence");
+        registerFlammableBlock(TELDER_FENCE_GATE, "telder_fence_gate");
+        registerFlammableBlock(TELDER_DOOR, "telder_door");
+        registerFlammableBlock(TELDER_TRAPDOOR, "telder_trapdoor");
+        registerBlock(SEALED_TELDER_JAR, "sealed_telder_jar"); // Изменить лут его
+        TELDER_JAR_ENTITY_TYPE = registerBlockEntity(TELDER_JAR, "telder_jar",
                 FabricBlockEntityTypeBuilder.create(TelderJarBlockEntity::new, TELDER_JAR));
-        registerFlammableBlock(TELDER_CHAIR, "telder_chair", id);
-        registerFlammableBlock(TELDER_TABLE, "telder_table", id);
-        TELDER_TABLE_WITH_CLOTH_ENTITY_TYPE = registerBlockEntity(TELDER_TABLE_WITH_CLOTH, "telder_table_with_cloth", id,
+        registerFlammableBlock(TELDER_CHAIR, "telder_chair");
+        registerFlammableBlock(TELDER_TABLE, "telder_table");
+        TELDER_TABLE_WITH_CLOTH_ENTITY_TYPE = registerBlockEntity(TELDER_TABLE_WITH_CLOTH, "telder_table_with_cloth",
                 FabricBlockEntityTypeBuilder.create(TableWithClothBlockEntity::new, TELDER_TABLE_WITH_CLOTH));
-        registerFlammableBlock(TELDER_TABLE_WITH_MAGIC_CLOTH, "telder_table_with_magic_cloth", id);
-        TELDER_CRATE_BLOCK_ENTITY_TYPE = registerBlockEntity(TELDER_CRATE, "telder_crate", id,
+        registerFlammableBlock(TELDER_TABLE_WITH_MAGIC_CLOTH, "telder_table_with_magic_cloth");
+        TELDER_CRATE_BLOCK_ENTITY_TYPE = registerBlockEntity(TELDER_CRATE, "telder_crate",
                 FabricBlockEntityTypeBuilder.create(CrateBlockEntity::new, TELDER_CRATE));
-        registerBlock(TELDER_SAMOVAR, "telder_samovar", id);
-        registerFlammableBlock(TELDER_LEAVES, "telder_leaves", id);
-        registerFlammableBlock(YELLOWLUME_BLOCK, "yellowlume_block", id);
-        registerFlammableBlock(YELLOWLUME_PULP, "yellowlume_pulp", id);
-        registerFlammableBlock(YELLOWLUME_STEM, "yellowlume_stem", id);
-        registerBlock(LITTLE_JAR, "little_jar", id);
-        registerBlock(PEACH_JAM_JAR, "peach_jam_jar", id,
+        registerBlock(TELDER_SAMOVAR, "telder_samovar");
+        registerFlammableBlock(TELDER_LEAVES, "telder_leaves");
+        registerFlammableBlock(YELLOWLUME_BLOCK, "yellowlume_block");
+        registerFlammableBlock(YELLOWLUME_PULP, "yellowlume_pulp");
+        registerFlammableBlock(YELLOWLUME_STEM, "yellowlume_stem");
+        registerBlock(LITTLE_JAR, "little_jar");
+        registerBlock(PEACH_JAM_JAR, "peach_jam_jar",
                 new JarDrinkableBlockItem(PEACH_JAM_JAR, new FabricItemSettings()
                         .food(new FoodComponent.Builder()
                                 .hunger(10)
@@ -508,7 +509,7 @@ public class Blocks {
                                 .build())
                         .maxCount(16))
                 );
-        registerBlock(BERRY_JAM_JAR, "berry_jam_jar", id,
+        registerBlock(BERRY_JAM_JAR, "berry_jam_jar",
                 new JarDrinkableBlockItem(BERRY_JAM_JAR, new FabricItemSettings()
                         .food(new FoodComponent.Builder()
                                 .hunger(8)
@@ -516,37 +517,37 @@ public class Blocks {
                                 .build())
                         .maxCount(16))
                 );
-        registerBlock(LITTLE_JAR_WITH_SOUL, "little_jar_with_soul", id);
-        registerBlock(LITTLE_JAR_WITH_DIRT, "little_jar_with_dirt", id);
-        registerBlock(PEACH_PIE, "peach_pie", id);
-        registerBlock(BERRY_PIE, "berry_pie", id);
-        registerBlock(SOUL_CATCHING_STRUCTURE, "soul_catching_structure", id);
-        registerBlock(ANCHOR_CHAIN, "anchor_chain", id);
-        registerBlock(ANCHOR, "anchor", id);
-        registerFlammableBlock(LIGHTELET, "lightelet", id);
-        registerFlammableBlock(YELLOWLUME, "yellowlume", id);
-        registerFlammableBlock(ALLIUMINANCE, "alliuminance", id);
-        registerFlammableBlock(ASTRA, "astra", id);
+        registerBlock(LITTLE_JAR_WITH_SOUL, "little_jar_with_soul");
+        registerBlock(LITTLE_JAR_WITH_DIRT, "little_jar_with_dirt");
+        registerBlock(PEACH_PIE, "peach_pie");
+        registerBlock(BERRY_PIE, "berry_pie");
+        registerBlock(SOUL_CATCHING_STRUCTURE, "soul_catching_structure");
+        registerBlock(ANCHOR_CHAIN, "anchor_chain");
+        registerBlock(ANCHOR, "anchor");
+        registerFlammableBlock(LIGHTELET, "lightelet");
+        registerFlammableBlock(YELLOWLUME, "yellowlume");
+        registerFlammableBlock(ALLIUMINANCE, "alliuminance");
+        registerFlammableBlock(ASTRA, "astra");
     }
 
-    private static <T extends Item> void registerBlock(Block block, String path, Function<String, Identifier> id, T item) {
-        Registry.register(Registries.BLOCK, id.apply(path), block);
-        Registry.register(Registries.ITEM, id.apply(path), item);
+    private static <T extends Item> void registerBlock(Block block, String path, T item) {
+        Registry.register(Registries.BLOCK, ExtratarUltimate.id(path), block);
+        Registry.register(Registries.ITEM, ExtratarUltimate.id(path), item);
         items.add(item);
     }
 
-    private static void registerBlock(Block block, String path, Function<String, Identifier> id) {
+    private static void registerBlock(Block block, String path) {
         var item = new BlockItem(block, new FabricItemSettings());
-        registerBlock(block, path, id, item);
+        registerBlock(block, path, item);
     }
 
-    private static <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(Block block, String path, Function<String, Identifier> id, FabricBlockEntityTypeBuilder<T> builder) {
-        registerBlock(block, path, id);
-        return Registry.register(Registries.BLOCK_ENTITY_TYPE, id.apply(path), builder.build(null));
+    private static <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(Block block, String path, FabricBlockEntityTypeBuilder<T> builder) {
+        registerBlock(block, path);
+        return Registry.register(Registries.BLOCK_ENTITY_TYPE, ExtratarUltimate.id(path), builder.build(null));
     }
 
-    private static void registerFlammableBlock(Block block, String path, Function<String, Identifier> id) {
-        registerBlock(block, path, id);
+    private static void registerFlammableBlock(Block block, String path) {
+        registerBlock(block, path);
         FlammableBlockRegistry.getDefaultInstance().add(block, 5, 5);
     }
 }

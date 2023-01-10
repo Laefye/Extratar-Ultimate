@@ -12,7 +12,7 @@ public class Sounds {
     public static SoundEvent YELLOW_PEACH_RECORD = SoundEvent.of(ExtratarUltimate.id("yellow_peach_record"));
     public static SoundEvent TRIANGLE_RECORD = SoundEvent.of(ExtratarUltimate.id("triangle_record"));
 
-    public static void register(Function<String, Identifier> id) {
+    public static void register() {
         registerSound(TELDER_SAMOVAR_USE);
         registerSound(YELLOW_PEACH_RECORD);
         registerSound(TRIANGLE_RECORD);

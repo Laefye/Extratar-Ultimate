@@ -26,16 +26,16 @@ public class ExtratarUltimate implements ModInitializer {
     public void onInitialize() {
         INSTANCE = this;
 
-        Blocks.register(ExtratarUltimate::id);
+        Blocks.register();
         ItemGroupEvents.modifyEntriesEvent(BLOCKS).register(entries -> {
             for (var item : Blocks.items) {
                 entries.add(item);
             }
         });
-        Sounds.register(ExtratarUltimate::id);
-        Entities.register(ExtratarUltimate::id);
-        Effects.register(ExtratarUltimate::id);
-        Items.register(ExtratarUltimate::id);
+        Sounds.register();
+        Entities.register();
+        Effects.register();
+        Items.register();
         ItemGroupEvents.modifyEntriesEvent(ITEMS).register(entries -> {
             for (var item : Items.items) {
                 entries.add(item);

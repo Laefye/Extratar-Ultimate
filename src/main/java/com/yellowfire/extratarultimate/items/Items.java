@@ -1,5 +1,6 @@
 package com.yellowfire.extratarultimate.items;
 
+import com.yellowfire.extratarultimate.ExtratarUltimate;
 import com.yellowfire.extratarultimate.Sounds;
 import com.yellowfire.extratarultimate.effects.Effects;
 import com.yellowfire.extratarultimate.entities.Entities;
@@ -137,36 +138,36 @@ public class Items {
     public static Item FENNEC_SPAWN_EGG = new SpawnEggItem(Entities.FENNEC, 0x8a5741, 0xdbd0c2, new FabricItemSettings());
 
 
-    public static void register(Function<String, Identifier> id) {
-        registerItem(YELLOW_PEACH, "yellow_peach", id);
-        registerItem(TRIANGLE, "triangle", id);
-        registerItem(GOLDEN_TRIANGLE, "golden_triangle", id);
-        registerItem(ENCHANTED_GOLDEN_TRIANGLE, "enchanted_golden_triangle", id);
-        registerItem(CHUK_CHUK, "chuk_chuk", id);
-        registerItem(BOILED_WATER_BOTTLE, "boiled_water_bottle", id);
-        registerItem(TEA_WITH_MILK_BOTTLE, "tea_with_milk_bottle", id);
-        registerItem(ASTRA_SYRUP_BOTTLE, "astra_syrup_bottle", id);
-        registerItem(PANACEA, "panacea", id);
-        registerItem(LUMINOUS_STEW, "luminous_stew", id);
-        registerItem(RAW_TELDER_STEEL, "raw_telder_steel", id);
-        registerItem(EARTH_CRYSTAL, "earth_crystal", id);
-        registerItem(NETHER_CRYSTAL, "nether_crystal", id);
-        registerItem(END_CRYSTAL, "end_crystal", id);
-        registerItem(TELDER_PULVERIS, "telder_pulveris", id);
-        registerItem(TELDER_STEEL_INGOT, "telder_steel_ingot", id);
-        registerItem(TELDER_STEEL_NUGGET, "telder_steel_nugget", id);
-        registerItem(TELDER_STEEL_GEAR, "telder_steel_gear", id);
-        registerItem(TELDER_CLOTH, "telder_cloth", id);
-        registerItem(TELDER_MAGIC_CLOTH, "telder_magic_cloth", id);
-        registerItem(TELDER_FLEECE, "telder_fleece", id);
-        registerItem(ASTRA_PETAL, "astra_petal", id);
-        registerItem(YELLOW_PEACH_DISC, "yellow_peach_disc", id);
-        registerItem(TRIANGLE_DISC, "triangle_disc", id);
-        registerItem(FENNEC_SPAWN_EGG, "fennec_spawn_egg", id);
+    public static void register() {
+        registerItem(YELLOW_PEACH, "yellow_peach");
+        registerItem(TRIANGLE, "triangle");
+        registerItem(GOLDEN_TRIANGLE, "golden_triangle");
+        registerItem(ENCHANTED_GOLDEN_TRIANGLE, "enchanted_golden_triangle");
+        registerItem(CHUK_CHUK, "chuk_chuk");
+        registerItem(BOILED_WATER_BOTTLE, "boiled_water_bottle");
+        registerItem(TEA_WITH_MILK_BOTTLE, "tea_with_milk_bottle");
+        registerItem(ASTRA_SYRUP_BOTTLE, "astra_syrup_bottle");
+        registerItem(PANACEA, "panacea");
+        registerItem(LUMINOUS_STEW, "luminous_stew");
+        registerItem(RAW_TELDER_STEEL, "raw_telder_steel");
+        registerItem(EARTH_CRYSTAL, "earth_crystal");
+        registerItem(NETHER_CRYSTAL, "nether_crystal");
+        registerItem(END_CRYSTAL, "end_crystal");
+        registerItem(TELDER_PULVERIS, "telder_pulveris");
+        registerItem(TELDER_STEEL_INGOT, "telder_steel_ingot");
+        registerItem(TELDER_STEEL_NUGGET, "telder_steel_nugget");
+        registerItem(TELDER_STEEL_GEAR, "telder_steel_gear");
+        registerItem(TELDER_CLOTH, "telder_cloth");
+        registerItem(TELDER_MAGIC_CLOTH, "telder_magic_cloth");
+        registerItem(TELDER_FLEECE, "telder_fleece");
+        registerItem(ASTRA_PETAL, "astra_petal");
+        registerItem(YELLOW_PEACH_DISC, "yellow_peach_disc");
+        registerItem(TRIANGLE_DISC, "triangle_disc");
+        registerItem(FENNEC_SPAWN_EGG, "fennec_spawn_egg");
     }
 
-    private static void registerItem(Item item, String path, Function<String, Identifier> id) {
+    private static void registerItem(Item item, String path) {
         items.add(item);
-        Registry.register(Registries.ITEM, id.apply(path), item);
+        Registry.register(Registries.ITEM, ExtratarUltimate.id(path), item);
     }
 }

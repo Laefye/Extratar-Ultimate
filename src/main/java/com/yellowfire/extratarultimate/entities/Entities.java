@@ -20,12 +20,12 @@ public class Entities {
             .dimensions(EntityDimensions.fixed(0.6F, 0.85F)).build();
     public static final EntityModelLayer MODEL_FENNEC_LAYER = new EntityModelLayer(ExtratarUltimate.id("fennec"), "main");
 
-    public static void register(Function<String, Identifier> id) {
-        Registry.register(Registries.ENTITY_TYPE, id.apply("fennec"), FENNEC);
+    public static void register() {
+        Registry.register(Registries.ENTITY_TYPE, ExtratarUltimate.id("fennec"), FENNEC);
         FabricDefaultAttributeRegistry.register(FENNEC, FennecEntity.createFennecAttributes());
     }
 
-    public static void clientRegister(Function<String, Identifier> id) {
+    public static void clientRegister() {
         EntityRendererRegistry.register(Entities.FENNEC, FennecEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(MODEL_FENNEC_LAYER, FennecEntityModel::getTexturedModelData);
     }
