@@ -2,6 +2,7 @@ package com.yellowfire.extratarultimate.blocks;
 
 import com.google.common.collect.ImmutableList;
 import com.yellowfire.extratarultimate.items.Items;
+import com.yellowfire.extratarultimate.utils.loot.LootTable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
@@ -29,23 +30,21 @@ public class TableWithMagicClothBlock extends TableBlock {
         super(settings);
     }
 
-    private static ImmutableList<Item> FOODS = ImmutableList.of(
-            Items.TRIANGLE,
-            Items.GOLDEN_TRIANGLE,
-            Items.CHUK_CHUK,
-            Items.YELLOW_PEACH,
-            net.minecraft.item.Items.APPLE,
-            net.minecraft.item.Items.BAKED_POTATO,
-            net.minecraft.item.Items.CARROT,
-            net.minecraft.item.Items.COOKED_BEEF,
-            net.minecraft.item.Items.COOKED_CHICKEN,
-            net.minecraft.item.Items.COOKED_COD,
-            net.minecraft.item.Items.COOKED_SALMON);
+    private static final LootTable LOOT_TABLE = LootTable.of(
+            LootTable.of(Items.TRIANGLE).addRandomCount(1, 2).build(),
+            LootTable.of(Items.CHUK_CHUK).addRandomCount(1, 2).build(),
+            LootTable.of(net.minecraft.item.Items.APPLE).addRandomCount(1, 5).build(),
+            LootTable.of(net.minecraft.item.Items.BAKED_POTATO).addRandomCount(1, 2).build(),
+            LootTable.of(net.minecraft.item.Items.CARROT).addRandomCount(1, 3).build(),
+            LootTable.of(net.minecraft.item.Items.COOKED_BEEF).addRandomCount(1, 2).build(),
+            LootTable.of(net.minecraft.item.Items.COOKED_CHICKEN).addRandomCount(1, 2).build(),
+            LootTable.of(net.minecraft.item.Items.COOKED_COD).addRandomCount(1, 2).build(),
+            LootTable.of(net.minecraft.item.Items.COOKED_SALMON).addRandomCount(1, 2).build()
+    ).addRandomCount(1, 5).build();
 
     public static void drop(World world, Vec3d center) {
-        for (int i = 0; i < world.random.nextBetween(1,3); i++) {
-            var item = FOODS.get(world.random.nextInt(FOODS.size()));
-            var itemEntity = new ItemEntity(world, center.x, center.y, center.z, new ItemStack(item, world.random.nextBetween(1, 3)));
+        for (var stack : LOOT_TABLE.execute(world.random)) {
+            var itemEntity = new ItemEntity(world, center.x, center.y, center.z, stack);
             itemEntity.setVelocity(world.random.nextTriangular(0.0, 0.11485), world.random.nextTriangular(0.2, 0.11485), world.random.nextTriangular(0.0, 0.11485));
             world.spawnEntity(itemEntity);
         }
