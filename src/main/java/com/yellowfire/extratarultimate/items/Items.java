@@ -10,14 +10,10 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
-import java.util.function.Function;
 
 public class Items {
     public static ArrayList<Item> items = new ArrayList<>();
@@ -136,6 +132,9 @@ public class Items {
     public static Item TELDER_MAGIC_CLOTH = new MagicClothItem(new FabricItemSettings());
     public static Item TELDER_FLEECE = new Item(new FabricItemSettings());
     public static Item ASTRA_PETAL = new Item(new FabricItemSettings());
+    public static Item ANCHOR_LINKER = new AnchorLinker(new FabricItemSettings()
+            .maxCount(1)
+            .maxDamage(32));
     public static Item YELLOW_PEACH_DISC = new MusicDiscItem(15, Sounds.YELLOW_PEACH_RECORD, new FabricItemSettings(), 3 * 60 + 15);
     public static Item TRIANGLE_DISC = new MusicDiscItem(15, Sounds.TRIANGLE_RECORD, new FabricItemSettings(), 2 * 60 + 54);
     public static Item FENNEC_SPAWN_EGG = new SpawnEggItem(Entities.FENNEC, 0x8a5741, 0xdbd0c2, new FabricItemSettings());
@@ -164,6 +163,7 @@ public class Items {
         registerItem(TELDER_MAGIC_CLOTH, "telder_magic_cloth");
         registerItem(TELDER_FLEECE, "telder_fleece");
         registerItem(ASTRA_PETAL, "astra_petal");
+        registerItem(ANCHOR_LINKER, "anchor_linker");
         registerItem(YELLOW_PEACH_DISC, "yellow_peach_disc");
         registerItem(TRIANGLE_DISC, "triangle_disc");
         registerItem(FENNEC_SPAWN_EGG, "fennec_spawn_egg");

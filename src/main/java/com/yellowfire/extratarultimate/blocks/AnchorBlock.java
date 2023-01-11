@@ -1,30 +1,23 @@
 package com.yellowfire.extratarultimate.blocks;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
+import com.yellowfire.extratarultimate.ExtratarUltimate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.block.enums.BedPart;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.entity.Dismounting;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.command.SpawnPointCommand;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -37,11 +30,9 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.CollisionView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.explosion.ExplosionBehavior;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.function.Function;
 
 public class AnchorBlock extends Block {
     public static DirectionProperty FACING = Properties.FACING;
@@ -91,26 +82,37 @@ public class AnchorBlock extends Block {
     }
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (world.isClient) {
+            return ActionResult.CONSUME;
+        }
+        var generalBlockPos = getGeneralBlockPos(world, pos);
+        if (generalBlockPos.isPresent() && !pos.equals(generalBlockPos.get())) {
+            return onUse(world.getBlockState(generalBlockPos.get()), world, generalBlockPos.get(), player, hand, hit);
+        }
+        var serverPlayer = (ServerPlayerEntity) player;
+        serverPlayer.setSpawnPoint(world.getRegistryKey(), pos, 0, true, true);
+        return ActionResult.SUCCESS;
+    }
+
+    public Optional<BlockPos> getGeneralBlockPos(World world, BlockPos pos) {
+        var state = world.getBlockState(pos);
+        if (state.getBlock() != com.yellowfire.extratarultimate.blocks.Blocks.ANCHOR) {
+            return Optional.empty();
+        }
         if (state.get(HALF) == DoubleBlockHalf.UPPER) {
             var lowerBlockPos = pos.down();
             var lowerBlockState = world.getBlockState(lowerBlockPos);
-            if (lowerBlockState.getBlock() == com.yellowfire.extratarultimate.blocks.Blocks.ANCHOR) {
-                return lowerBlockState.getBlock().onUse(lowerBlockState, world, lowerBlockPos, player, hand, hit);
+            if (lowerBlockState.getBlock() == com.yellowfire.extratarultimate.blocks.Blocks.ANCHOR && lowerBlockState.get(HALF) == DoubleBlockHalf.LOWER) {
+                return Optional.of(lowerBlockPos);
             }
         }
-        if (world.isClient) {
-            return ActionResult.CONSUME;
-        } else {
-            var serverPlayer = (ServerPlayerEntity) player;
-            serverPlayer.setSpawnPoint(world.getRegistryKey(), pos, 0, true, true);
-            return ActionResult.SUCCESS;
-        }
+        return Optional.of(pos);
     }
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!world.isClient && player.isCreative()) {
-            AnchorBlock.onBreakInCreative(world, pos, state, player);
+            onBreakInCreative(world, pos, state, player);
         }
         super.onBreak(world, pos, state, player);
     }
@@ -127,8 +129,7 @@ public class AnchorBlock extends Block {
         return state;
     }
 
-    // Компания пи..
-    public static void onBreakInCreative(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public void onBreakInCreative(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         DoubleBlockHalf doubleBlockHalf = state.get(HALF);
         if (doubleBlockHalf == DoubleBlockHalf.UPPER) {
             BlockPos lowerBlock = pos.down();
@@ -152,20 +153,20 @@ public class AnchorBlock extends Block {
 
     private static Optional<Vec3d> findRespawnPosition(EntityType<?> entity, CollisionView world, BlockPos pos, boolean ignoreInvalidPos) {
         BlockPos.Mutable mutable = new BlockPos.Mutable();
-        var var5 = VALID_SPAWN_OFFSETS.iterator();
+        var validPositions = VALID_SPAWN_OFFSETS.iterator();
 
-        Vec3d vec3d;
+        Vec3d finalPosition;
         do {
-            if (!var5.hasNext()) {
+            if (!validPositions.hasNext()) {
                 return Optional.empty();
             }
 
-            Vec3i vec3i = var5.next();
-            mutable.set(pos).move(vec3i);
-            vec3d = Dismounting.findRespawnPos(entity, world, mutable, ignoreInvalidPos);
-        } while(vec3d == null);
+            Vec3i position = validPositions.next();
+            mutable.set(pos).move(position);
+            finalPosition = Dismounting.findRespawnPos(entity, world, mutable, ignoreInvalidPos);
+        } while(finalPosition == null);
 
-        return Optional.of(vec3d);
+        return Optional.of(finalPosition);
     }
 
     static {
