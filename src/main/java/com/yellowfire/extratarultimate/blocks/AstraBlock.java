@@ -13,7 +13,7 @@ public class AstraBlock extends FlowerBlock {
         super(StatusEffects.SPEED, 0, settings);
     }
 
-    private static VoxelShape SHAPE = Block.createCuboidShape(5, 0, 5, 11, 5, 11);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(5, 0, 5, 11, 5, 11);
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

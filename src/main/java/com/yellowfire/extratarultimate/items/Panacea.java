@@ -7,6 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+
 public class Panacea extends Item {
     public Panacea(Settings settings) {
         super(settings);
@@ -21,7 +23,7 @@ public class Panacea extends Item {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         var st = super.finishUsing(stack, world, user);
         if (!world.isClient) {
-            for (var effect : user.getStatusEffects()) {
+            for (var effect : new ArrayList<>(user.getStatusEffects())) {
                 if (isBadEffect(effect.getEffectType())) {
                     user.removeStatusEffect(effect.getEffectType());
                 }

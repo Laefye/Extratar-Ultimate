@@ -18,7 +18,6 @@ import java.util.function.Function;
 public class Entities {
     public static EntityType<FennecEntity> FENNEC = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FennecEntity::new)
             .dimensions(EntityDimensions.fixed(0.6F, 0.85F)).build();
-    public static final EntityModelLayer MODEL_FENNEC_LAYER = new EntityModelLayer(ExtratarUltimate.id("fennec"), "main");
 
     public static void register() {
         Registry.register(Registries.ENTITY_TYPE, ExtratarUltimate.id("fennec"), FENNEC);
@@ -27,6 +26,6 @@ public class Entities {
 
     public static void clientRegister() {
         EntityRendererRegistry.register(Entities.FENNEC, FennecEntityRenderer::new);
-        EntityModelLayerRegistry.registerModelLayer(MODEL_FENNEC_LAYER, FennecEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(FennecEntityRenderer.MODEL_FENNEC_LAYER, FennecEntityModel::getTexturedModelData);
     }
 }

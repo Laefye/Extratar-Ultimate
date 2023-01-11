@@ -11,7 +11,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 public class SoulCatchingStructureBlock extends WaterloggableBlock {
-    private static VoxelShape SHAPE = Block.createCuboidShape(4, 0, 4, 12, 8, 12);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(4, 0, 4, 12, 8, 12);
 
     public SoulCatchingStructureBlock(Settings settings) {
         super(settings);
@@ -24,10 +24,7 @@ public class SoulCatchingStructureBlock extends WaterloggableBlock {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        if (world.getBlockState(pos.down()).getBlock() == Blocks.SEALED_TELDER_JAR) {
-            return true;
-        }
-        return false;
+        return world.getBlockState(pos.down()).getBlock() == Blocks.SEALED_TELDER_JAR;
     }
 
     @Override

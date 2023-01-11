@@ -75,7 +75,6 @@ public class AnchorLinker extends Item {
             return TypedActionResult.pass(itemStack);
         }
         var pos = position.get();
-        ExtratarUltimate.INSTANCE.getLogger().info(pos.toString());
         if (!user.isCreative()) {
             itemStack.damage(1, world.random, (ServerPlayerEntity) user);
         }
@@ -86,13 +85,11 @@ public class AnchorLinker extends Item {
     private Optional<Vec3d> getTeleportPosition(World world, ItemStack stack) {
         var anchorPos = getAnchorPos(stack);
         if (anchorPos.isEmpty()) {
-            ExtratarUltimate.INSTANCE.getLogger().info("general block pos");
             return Optional.empty();
         }
         var blockPos = anchorPos.get();
         var anchor = world.getBlockState(blockPos);
         if (anchor.getBlock() != Blocks.ANCHOR) {
-            ExtratarUltimate.INSTANCE.getLogger().info("isn't anchor");
             return Optional.empty();
         }
         return AnchorBlock.findRespawnPosition(EntityType.PLAYER, world, blockPos);
