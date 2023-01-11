@@ -45,7 +45,7 @@ public class TableWithMagicClothBlock extends TableBlock {
     public static void drop(World world, Vec3d center) {
         for (var stack : LOOT_TABLE.execute(world.random)) {
             var itemEntity = new ItemEntity(world, center.x, center.y, center.z, stack);
-            itemEntity.setVelocity(world.random.nextTriangular(0.0, 0.11485), world.random.nextTriangular(0.2, 0.11485), world.random.nextTriangular(0.0, 0.11485));
+            itemEntity.setVelocity(Items.getItemVelocity(world));
             world.spawnEntity(itemEntity);
         }
     }

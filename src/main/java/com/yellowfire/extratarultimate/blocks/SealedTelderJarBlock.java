@@ -50,11 +50,11 @@ public class SealedTelderJarBlock extends AbstractTelderJarBlock {
                 world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, posCatchingStructure);
                 if (world.random.nextFloat() < 0.2) {
                     var itemEntity = new ItemEntity(world, center.x, center.y, center.z, new ItemStack(Blocks.LITTLE_JAR_WITH_SOUL));
-                    itemEntity.setVelocity(world.random.nextTriangular(0.0, 0.11485000171139836), world.random.nextTriangular(0.2, 0.11485000171139836), world.random.nextTriangular(0.0, 0.11485000171139836));
+                    itemEntity.setVelocity(Items.getItemVelocity(world));
                     world.spawnEntity(itemEntity);
                 } else {
                     var itemEntity = new ItemEntity(world, center.x, center.y, center.z, new ItemStack(Blocks.SOUL_CATCHING_STRUCTURE));
-                    itemEntity.setVelocity(world.random.nextTriangular(0.0, 0.11485000171139836), world.random.nextTriangular(0.2, 0.11485000171139836), world.random.nextTriangular(0.0, 0.11485000171139836));
+                    itemEntity.setVelocity(Items.getItemVelocity(world));
                     world.spawnEntity(itemEntity);
                 }
             }

@@ -12,6 +12,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.function.Function;
@@ -169,5 +172,13 @@ public class Items {
     private static void registerItem(Item item, String path) {
         items.add(item);
         Registry.register(Registries.ITEM, ExtratarUltimate.id(path), item);
+    }
+
+    public static Vec3d getItemVelocity(World world) {
+        return new Vec3d(
+                world.random.nextTriangular(0.0, 0.11485),
+                world.random.nextTriangular(0.2, 0.11485),
+                world.random.nextTriangular(0.0, 0.11485)
+        );
     }
 }

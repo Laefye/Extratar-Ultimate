@@ -2,9 +2,11 @@
   "replace": false,
   "values": [
     "extratar_ultimate:earth_crystal_ore",
+    "extratar_ultimate:deepslate_earth_crystal_ore",
     "extratar_ultimate:nether_crystal_ore",
     "extratar_ultimate:end_crystal_ore",
     "extratar_ultimate:telder_steel_ore",
+    "extratar_ultimate:deepslate_telder_steel_ore",
     "extratar_ultimate:telder_steel_block",
     "extratar_ultimate:mechanical_structure",
     "extratar_ultimate:ethersoaked_stone",

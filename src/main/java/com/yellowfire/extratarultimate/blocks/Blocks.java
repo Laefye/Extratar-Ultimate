@@ -15,27 +15,24 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import java.util.ArrayList;
-import java.util.function.Function;
 
 public class Blocks {
     public static ArrayList<Item> items = new ArrayList<>();
-
-    public static Block TELDER_STEEL_ORE = new Block(FabricBlockSettings.of(Material.METAL)
-            .mapColor(MapColor.STONE_GRAY)
-            .strength(30f)
-            .sounds(BlockSoundGroup.STONE)
-            .requiresTool()
-    );
 
     public static Block EARTH_CRYSTAL_ORE = new ExperienceDroppingBlock(FabricBlockSettings.of(Material.METAL)
             .mapColor(MapColor.STONE_GRAY)
             .sounds(BlockSoundGroup.STONE)
             .requiresTool()
             .strength(3.0F, 3.0F), UniformIntProvider.create(1, 3));
+
+    public static Block DEEPSLATE_EARTH_CRYSTAL_ORE = new ExperienceDroppingBlock(FabricBlockSettings.of(Material.METAL)
+            .mapColor(MapColor.DEEPSLATE_GRAY)
+            .sounds(BlockSoundGroup.DEEPSLATE)
+            .requiresTool()
+            .strength(4.5F, 3.0F), UniformIntProvider.create(1, 3));
 
 
     public static Block NETHER_CRYSTAL_ORE = new ExperienceDroppingBlock(FabricBlockSettings.of(Material.METAL)
@@ -49,6 +46,20 @@ public class Blocks {
             .sounds(BlockSoundGroup.STONE)
             .requiresTool()
             .strength(3.0F, 3.0F), UniformIntProvider.create(5, 7));
+
+    public static Block TELDER_STEEL_ORE = new Block(FabricBlockSettings.of(Material.METAL)
+            .mapColor(MapColor.STONE_GRAY)
+            .strength(30f, 30f)
+            .sounds(BlockSoundGroup.STONE)
+            .requiresTool()
+    );
+
+    public static Block DEEPSLATE_TELDER_STEEL_ORE = new Block(FabricBlockSettings.of(Material.METAL)
+            .mapColor(MapColor.DEEPSLATE_GRAY)
+            .strength(45f, 30f)
+            .sounds(BlockSoundGroup.DEEPSLATE)
+            .requiresTool()
+    );
 
     public static Block EARTH_CRYSTAL_BLOCK = new Block(FabricBlockSettings.of(Material.METAL)
             .mapColor(MapColor.GREEN)
@@ -451,9 +462,11 @@ public class Blocks {
 
     public static void register() {
         registerBlock(EARTH_CRYSTAL_ORE, "earth_crystal_ore");
+        registerBlock(DEEPSLATE_EARTH_CRYSTAL_ORE, "deepslate_earth_crystal_ore");
         registerBlock(NETHER_CRYSTAL_ORE, "nether_crystal_ore");
         registerBlock(END_CRYSTAL_ORE, "end_crystal_ore");
         registerBlock(TELDER_STEEL_ORE, "telder_steel_ore");
+        registerBlock(DEEPSLATE_TELDER_STEEL_ORE, "deepslate_telder_steel_ore");
         registerBlock(EARTH_CRYSTAL_BLOCK, "earth_crystal_block");
         registerBlock(NETHER_CRYSTAL_BLOCK, "nether_crystal_block");
         registerBlock(END_CRYSTAL_BLOCK, "end_crystal_block");
