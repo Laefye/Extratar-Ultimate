@@ -69,15 +69,24 @@ public class AnchorLinker extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
+        if (getAnchorPos(itemStack).isEmpty()) {
+            return TypedActionResult.pass(itemStack);
+        }
         var position = getTeleportPosition(world, itemStack);
-        if (position.isEmpty() || world.isClient) {
+        if (position.isPresent()) {
+            user.getItemCooldownManager().set(this, 20 * 5);
+            if (!user.isCreative()) {
+                itemStack.damage(1, world.random, (ServerPlayerEntity) user);
+            }
+        }
+        if (world.isClient) {
+            return position.isPresent() ? TypedActionResult.success(itemStack) : TypedActionResult.pass(itemStack);
+        }
+        if (position.isEmpty()) {
             user.sendMessage(Text.translatable("chat.extratar_ultimate.anchor_linker.connection_lost"));
             return TypedActionResult.pass(itemStack);
         }
         var pos = position.get();
-        if (!user.isCreative()) {
-            itemStack.damage(1, world.random, (ServerPlayerEntity) user);
-        }
         user.requestTeleport(pos.x, pos.y, pos.z);
         return TypedActionResult.consume(itemStack);
     }
