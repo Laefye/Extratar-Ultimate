@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -70,7 +71,7 @@ public class AnchorLinker extends Item {
         ItemStack itemStack = user.getStackInHand(hand);
         var position = getTeleportPosition(world, itemStack);
         if (position.isEmpty() || world.isClient) {
-            ExtratarUltimate.INSTANCE.getLogger().info("not found position or client");
+            user.sendMessage(Text.translatable("chat.extratar_ultimate.anchor_linker.connection_lost"));
             return TypedActionResult.pass(itemStack);
         }
         var pos = position.get();

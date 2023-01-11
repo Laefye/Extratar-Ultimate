@@ -1,28 +1,11 @@
 package com.yellowfire.extratarultimate.blocks;
 
-import com.google.common.collect.ImmutableList;
 import com.yellowfire.extratarultimate.items.Items;
 import com.yellowfire.extratarultimate.utils.loot.LootTable;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 public class TableWithMagicClothBlock extends TableBlock {
 
@@ -42,11 +25,20 @@ public class TableWithMagicClothBlock extends TableBlock {
             LootTable.of(net.minecraft.item.Items.COOKED_SALMON).addRandomCount(1, 2).build()
     ).addRandomCount(1, 5).build();
 
-    public static void drop(World world, Vec3d center) {
+    public void generateFood(World world, Vec3d center) {
         for (var stack : LOOT_TABLE.execute(world.random)) {
             var itemEntity = new ItemEntity(world, center.x, center.y, center.z, stack);
             itemEntity.setVelocity(Items.getItemVelocity(world));
             world.spawnEntity(itemEntity);
+        }
+    }
+
+    public void generateParticles(World world, Vec3d center) {
+        for (int i = 0; i < 50; i++) {
+            var offX = world.random.nextFloat() * 1 - 0.5;
+            var offY = world.random.nextFloat() * 0.5 - 0.25;
+            var offZ = world.random.nextFloat() * 1 - 0.5;
+            world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, center.x + offX, center.y + offY, center.z + offZ, 0,0,0);
         }
     }
 }

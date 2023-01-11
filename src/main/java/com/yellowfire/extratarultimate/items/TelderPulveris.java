@@ -18,13 +18,9 @@ public class TelderPulveris extends Item {
         var pos = context.getBlockPos();
         var state = world.getBlockState(pos);
         if (state.getBlock() == Blocks.TELDER_TABLE_WITH_MAGIC_CLOTH) {
+            var block = ((TableWithMagicClothBlock) Blocks.TELDER_TABLE_WITH_MAGIC_CLOTH);
             var center = pos.up().toCenterPos().subtract(0, 0.4, 0);
-            for (int i = 0; i < 50; i++) {
-                var offX = world.random.nextFloat() * 0.5 - 0.25;
-                var offY = world.random.nextFloat() * 0.5 - 0.25;
-                var offZ = world.random.nextFloat() * 0.5 - 0.25;
-                world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, center.x + offX, center.y + offY, center.z + offZ, 0,0,0);
-            }
+            block.generateParticles(world, center);
             if (world.isClient) {
                 return ActionResult.SUCCESS;
             }
@@ -32,7 +28,7 @@ public class TelderPulveris extends Item {
             if (player != null && !player.isCreative()) {
                 context.getStack().decrement(1);
             }
-            TableWithMagicClothBlock.drop(world, center);
+            block.generateFood(world, center);
             return ActionResult.CONSUME;
         }
         return super.useOnBlock(context);
