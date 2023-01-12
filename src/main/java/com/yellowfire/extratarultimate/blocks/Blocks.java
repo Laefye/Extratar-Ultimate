@@ -272,18 +272,18 @@ public class Blocks {
             SoundEvents.BLOCK_WOODEN_TRAPDOOR_OPEN, SoundEvents.BLOCK_WOODEN_TRAPDOOR_CLOSE
     );
 
-    public static Block SEALED_TELDER_JAR = new SealedTelderJarBlock(FabricBlockSettings.of(Material.WOOD)
+    public static Block SEALED_TELDER_JAR = new SealedTelderJarBlock(FabricBlockSettings.of(Material.STONE)
             .mapColor(MapColor.BROWN)
             .nonOpaque()
             .strength(0.2f)
-            .sounds(BlockSoundGroup.WOOD)
+            .sounds(BlockSoundGroup.STONE)
     );
 
-    public static Block TELDER_JAR = new TelderJarBlock(FabricBlockSettings.of(Material.WOOD)
+    public static Block TELDER_JAR = new TelderJarBlock(FabricBlockSettings.of(Material.STONE)
             .mapColor(MapColor.BROWN)
             .nonOpaque()
-            .strength(0.2f)
-            .sounds(BlockSoundGroup.WOOD)
+            .strength(2f, 3f)
+            .sounds(BlockSoundGroup.STONE)
     );
 
     public static BlockEntityType<TelderJarBlockEntity> TELDER_JAR_ENTITY_TYPE;

@@ -135,8 +135,8 @@ public class Items {
     public static Item ANCHOR_LINKER = new AnchorLinker(new FabricItemSettings()
             .maxCount(1)
             .maxDamage(32));
-    public static Item YELLOW_PEACH_DISC = new MusicDiscItem(15, Sounds.YELLOW_PEACH_RECORD, new FabricItemSettings(), 3 * 60 + 15);
-    public static Item TRIANGLE_DISC = new MusicDiscItem(15, Sounds.TRIANGLE_RECORD, new FabricItemSettings(), 2 * 60 + 54);
+    public static Item YELLOW_PEACH_DISC = new MusicDiscItem(15, Sounds.YELLOW_PEACH_RECORD, new FabricItemSettings().maxCount(1), 3 * 60 + 15);
+    public static Item TRIANGLE_DISC = new MusicDiscItem(15, Sounds.TRIANGLE_RECORD, new FabricItemSettings().maxCount(1), 2 * 60 + 54);
     public static Item FENNEC_SPAWN_EGG = new SpawnEggItem(Entities.FENNEC, 0x8a5741, 0xdbd0c2, new FabricItemSettings());
 
 
