@@ -4,8 +4,12 @@ import com.yellowfire.extratarultimate.items.Items;
 import com.yellowfire.extratarultimate.utils.loot.LootTable;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import java.util.stream.Collectors;
 
 public class TableWithMagicClothBlock extends TableBlock {
 
@@ -33,12 +37,13 @@ public class TableWithMagicClothBlock extends TableBlock {
         }
     }
 
-    public void generateParticles(World world, Vec3d center) {
-        for (int i = 0; i < 50; i++) {
-            var offX = world.random.nextFloat() * 1 - 0.5;
-            var offY = world.random.nextFloat() * 0.5 - 0.25;
-            var offZ = world.random.nextFloat() * 1 - 0.5;
-            world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, center.x + offX, center.y + offY, center.z + offZ, 0,0,0);
+    public void generateParticles(ServerWorld world, Vec3d center) {
+        var players = world.getPlayers().stream()
+                .filter(player -> player.getPos().distanceTo(center) < 100)
+                .toList();
+        for (var player : players) {
+            world.spawnParticles(
+                    player, ParticleTypes.SOUL_FIRE_FLAME, true, center.x, center.y, center.z, 50, 0.2, 0.1, 0.2, 0);
         }
     }
 }
