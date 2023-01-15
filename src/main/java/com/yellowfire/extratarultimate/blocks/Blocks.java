@@ -294,13 +294,13 @@ public class Blocks {
             .strength(2f, 3f)
             .sounds(BlockSoundGroup.WOOD));
 
-    public static Block TELDER_TABLE = new TableBlock(FabricBlockSettings.of(Material.WOOD)
+    public static Block TELDER_TABLE = new TelderTableBlock(FabricBlockSettings.of(Material.WOOD)
             .mapColor(MapColor.BROWN)
             .nonOpaque()
             .strength(2f, 3f)
             .sounds(BlockSoundGroup.WOOD));
 
-    public static Block TELDER_TABLE_WITH_CLOTH = new TableWithClothBlock(FabricBlockSettings.of(Material.WOOD)
+    public static Block TELDER_TABLE_WITH_CLOTH = new TelderTableWithClothBlock(FabricBlockSettings.of(Material.WOOD)
             .mapColor(MapColor.BROWN)
             .nonOpaque()
             .strength(2f, 3f)
@@ -308,7 +308,7 @@ public class Blocks {
 
     public static BlockEntityType<TableWithClothBlockEntity> TELDER_TABLE_WITH_CLOTH_ENTITY_TYPE;
 
-    public static Block TELDER_TABLE_WITH_MAGIC_CLOTH = new TableWithMagicClothBlock(FabricBlockSettings.of(Material.WOOD)
+    public static Block TELDER_TABLE_WITH_MAGIC_CLOTH = new TelderTableWithMagicClothBlock(FabricBlockSettings.of(Material.WOOD)
             .mapColor(MapColor.BROWN)
             .nonOpaque()
             .strength(2f, 3f)
