@@ -1,5 +1,6 @@
 package com.yellowfire.extratarultimate.items;
 
+import com.yellowfire.extratarultimate.Tags;
 import com.yellowfire.extratarultimate.blocks.Blocks;
 import com.yellowfire.extratarultimate.blocks.TelderTableWithMagicClothBlock;
 import com.yellowfire.extratarultimate.blocks.YellowlumeBlock;
@@ -28,7 +29,7 @@ public class TelderPulveris extends Item {
             block.generateParticles((ServerWorld) world, center);
             consumeItem(context);
             return ActionResult.CONSUME;
-        } else if (state.getBlock() == Blocks.YELLOWLUME) {
+        } else if (state.isIn(Tags.SOAKERS)) {
             if (world.isClient) {
                 return ActionResult.SUCCESS;
             }

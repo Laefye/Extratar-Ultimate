@@ -21,8 +21,6 @@ public class LittleJarBlock extends WaterloggableBlock {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        pos = pos.down();
-        var floor = world.getBlockState(pos);
-        return floor.isSideSolid(world, pos, Direction.UP, SideShapeType.FULL);
+        return sideCoversSmallSquare(world, pos.down(), Direction.UP);
     }
 }
