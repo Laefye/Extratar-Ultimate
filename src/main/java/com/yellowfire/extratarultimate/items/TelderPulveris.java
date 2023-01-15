@@ -2,6 +2,7 @@ package com.yellowfire.extratarultimate.items;
 
 import com.yellowfire.extratarultimate.blocks.Blocks;
 import com.yellowfire.extratarultimate.blocks.TableWithMagicClothBlock;
+import com.yellowfire.extratarultimate.blocks.YellowlumeBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.particle.ParticleTypes;
@@ -20,19 +21,32 @@ public class TelderPulveris extends Item {
         var pos = context.getBlockPos();
         var state = world.getBlockState(pos);
         if (state.getBlock() == Blocks.TELDER_TABLE_WITH_MAGIC_CLOTH) {
-            var block = ((TableWithMagicClothBlock) Blocks.TELDER_TABLE_WITH_MAGIC_CLOTH);
-            var center = pos.up().toCenterPos().subtract(0, 0.4, 0);
             if (world.isClient) {
                 return ActionResult.SUCCESS;
             }
-            var player = context.getPlayer();
-            if (player != null && !player.isCreative()) {
-                context.getStack().decrement(1);
-            }
+            var block = ((TableWithMagicClothBlock) Blocks.TELDER_TABLE_WITH_MAGIC_CLOTH);
+            var center = pos.up().toCenterPos().subtract(0, 0.4, 0);
+            consumeItem(context);
             block.generateFood(world, center);
             block.generateParticles((ServerWorld) world, center);
             return ActionResult.CONSUME;
+        } else if (state.getBlock() == Blocks.YELLOWLUME) {
+            if (world.isClient) {
+                return ActionResult.SUCCESS;
+            }
+            var block = (YellowlumeBlock) Blocks.YELLOWLUME;
+            var center = pos.toCenterPos().subtract(0, 0.4, 0);
+            consumeItem(context);
+            block.soakBlocks(world, pos);
+            block.generateParticles((ServerWorld) world, center);
         }
         return super.useOnBlock(context);
+    }
+
+    private void consumeItem(ItemUsageContext context) {
+        var player = context.getPlayer();
+        if (player != null && !player.isCreative()) {
+            context.getStack().decrement(1);
+        }
     }
 }
