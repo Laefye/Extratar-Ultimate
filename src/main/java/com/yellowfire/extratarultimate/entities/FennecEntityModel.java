@@ -1,6 +1,7 @@
 package com.yellowfire.extratarultimate.entities;
 
 import com.google.common.collect.ImmutableList;
+import com.yellowfire.extratarultimate.ExtratarUltimate;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.AnimalModel;
@@ -75,14 +76,28 @@ public class FennecEntityModel extends AnimalModel<FennecEntity> {
         this.rightFrontLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + 3.1415927F) * 1F * limbDistance;
         this.leftFrontLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * limbDistance;
         this.tail.yaw = MathHelper.cos(limbAngle * 0.6662F) * limbDistance;
-        // Уши
-        var k = 1f - entity.getHealth() / entity.getMaxHealth();
-        this.rightEar.pitch = -0.2618F * k;
-        this.rightEar.yaw = 0.8727F * k;
-        this.rightEar.roll = -0.2182F * k;
-        this.leftEar.pitch = -0.2618F * k;
-        this.leftEar.yaw = -0.8727F * k;
-        this.leftEar.roll = 0.2182F * k;
+
+        var k = MathHelper.clamp(1f - entity.getHealth() / entity.getMaxHealth(), 0f, 1f);
+        // Уши (версия прижимание)
+//        this.rightEar.pitch = -0.2618F * k;
+//        this.rightEar.yaw = 1.2654F * k;
+//        this.rightEar.roll = -0.2182F * k;
+//        this.rightEar.pivotX = -1.8f - k;
+//        this.rightEar.pivotZ = -2.5F + k * 1.25f;
+//
+//        this.leftEar.pitch = -0.2618F * k;
+//        this.leftEar.yaw = -1.2654F * k;
+//        this.leftEar.roll = 0.2182F * k;
+//        this.leftEar.pivotX = 1.8f + k;
+//        this.leftEar.pivotZ = -2.5F + k * 1.25f;
+        // Уши (версия опускание)
+//        this.leftEar.pitch = -0.6545F * k;
+//        this.leftEar.yaw = 0.0873F * k;
+//        this.leftEar.roll = 0;
+//        this.rightEar.pitch = -0.6545F * k;
+//        this.rightEar.yaw = -0.0873F * k;
+//        this.rightEar.roll = 0;
+        // ВРЕМЕННО ИЛИ НАВСЕГДА УБРАНО
     }
 
     @Override
