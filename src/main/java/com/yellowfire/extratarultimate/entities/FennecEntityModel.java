@@ -18,6 +18,10 @@ public class FennecEntityModel extends AnimalModel<FennecEntity> {
     private final ModelPart rightFrontLeg;
     private final ModelPart leftFrontLeg;
     private final ModelPart tail;
+    private static final String RIGHT_EAR = "right_ear";
+    private static final String LEFT_EAR = "left_ear";
+    private final ModelPart rightEar;
+    private final ModelPart leftEar;
 
     public FennecEntityModel(ModelPart modelPart) {
         this.body = modelPart.getChild(EntityModelPartNames.BODY);
@@ -27,32 +31,38 @@ public class FennecEntityModel extends AnimalModel<FennecEntity> {
         this.rightFrontLeg = modelPart.getChild(EntityModelPartNames.RIGHT_FRONT_LEG);
         this.leftFrontLeg = modelPart.getChild(EntityModelPartNames.LEFT_FRONT_LEG);
         this.tail = body.getChild(EntityModelPartNames.TAIL);
+        this.rightEar = head.getChild(RIGHT_EAR);
+        this.leftEar = head.getChild(LEFT_EAR);
     }
 
     public static TexturedModelData getTexturedModelData() {
-        ModelData meshdefinition = new ModelData();
-        ModelPartData partdefinition = meshdefinition.getRoot();
+        ModelData modelData = new ModelData();
+        ModelPartData root = modelData.getRoot();
 
-        ModelPartData head = partdefinition.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-3.0F, -3.0F, -4.0F, 6.0F, 6.0F, 4.0F, new Dilation(0.0F))
+        ModelPartData head = root.addChild(EntityModelPartNames.HEAD, ModelPartBuilder.create().uv(0, 0).cuboid(-3.0F, -3.0F, -4.0F, 6.0F, 6.0F, 4.0F, new Dilation(0.0F))
                 .uv(0, 10).cuboid(-1.5F, 1.0F, -6.0F, 3.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 16.0F, -5.0F));
 
-        ModelPartData b_r1 = head.addChild("b_r1", ModelPartBuilder.create().uv(20, 0).mirrored().cuboid(-4.0F, -16.0F, -3.0F, 5.0F, 8.0F, 1.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.of(0.0F, 8.0F, 0.0F, -0.0873F, 0.0873F, -0.1309F));
+        ModelPartData right_ear = head.addChild(RIGHT_EAR, ModelPartBuilder.create(), ModelTransform.pivot(-1.8F, 0.0F, -2.5F));
 
-        ModelPartData a_r1 = head.addChild("a_r1", ModelPartBuilder.create().uv(20, 0).cuboid(0.0F, -16.0F, -3.0F, 5.0F, 8.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, 8.0F, 0.0F, -0.0873F, -0.0873F, 0.1309F));
+        ModelPartData right_ear_part = right_ear.addChild("right_ear_part", ModelPartBuilder.create().uv(20, 0).mirrored().cuboid(-5.0F, -8.0F, -0.5F, 5.0F, 8.0F, 1.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.of(0.0F, 0.0F, 0.5F, 0.0F, 0.1309F, 0.0F));
 
-        ModelPartData left_hind_leg = partdefinition.addChild("left_hind_leg", ModelPartBuilder.create().uv(56, 0).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(1.75F, 16.0F, 5.0F));
+        ModelPartData left_ear = head.addChild(LEFT_EAR, ModelPartBuilder.create(), ModelTransform.pivot(1.8F, 0.0F, -2.5F));
 
-        ModelPartData right_hind_leg = partdefinition.addChild("right_hind_leg", ModelPartBuilder.create().uv(56, 0).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.75F, 16.0F, 5.0F));
+        ModelPartData left_ear_part = left_ear.addChild("left_ear_part", ModelPartBuilder.create().uv(20, 0).cuboid(0.0F, -8.0F, -0.5F, 5.0F, 8.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, 0.0F, 0.5F, 0.0F, -0.1309F, 0.0F));
 
-        ModelPartData left_front_leg = partdefinition.addChild("left_front_leg", ModelPartBuilder.create().uv(56, 0).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(1.75F, 16.0F, -3.0F));
+        ModelPartData left_hind_leg = root.addChild(EntityModelPartNames.LEFT_HIND_LEG, ModelPartBuilder.create().uv(56, 0).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(1.75F, 16.0F, 5.0F));
 
-        ModelPartData right_front_leg = partdefinition.addChild("right_front_leg", ModelPartBuilder.create().uv(56, 0).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.75F, 16.0F, -3.0F));
+        ModelPartData right_hind_leg = root.addChild(EntityModelPartNames.RIGHT_HIND_LEG, ModelPartBuilder.create().uv(56, 0).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.75F, 16.0F, 5.0F));
 
-        ModelPartData body = partdefinition.addChild("body", ModelPartBuilder.create().uv(0, 16).cuboid(-3.0F, -10.0F, -5.0F, 6.0F, 6.0F, 10.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+        ModelPartData left_front_leg = root.addChild(EntityModelPartNames.LEFT_FRONT_LEG, ModelPartBuilder.create().uv(56, 0).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(1.75F, 16.0F, -3.0F));
 
-        ModelPartData tail = body.addChild("tail", ModelPartBuilder.create().uv(33, 18).cuboid(-2.5F, -2.5F, 0.0F, 5.0F, 5.0F, 9.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -7.5F, 5.0F));
+        ModelPartData right_front_leg = root.addChild(EntityModelPartNames.RIGHT_FRONT_LEG, ModelPartBuilder.create().uv(56, 0).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.75F, 16.0F, -3.0F));
 
-        return TexturedModelData.of(meshdefinition, 64, 32);
+        ModelPartData body = root.addChild(EntityModelPartNames.BODY, ModelPartBuilder.create().uv(0, 16).cuboid(-3.0F, -10.0F, -5.0F, 6.0F, 6.0F, 10.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+
+        ModelPartData tail = body.addChild(EntityModelPartNames.TAIL, ModelPartBuilder.create().uv(33, 18).cuboid(-2.5F, -2.5F, 0.0F, 5.0F, 5.0F, 9.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -7.5F, 5.0F, 0.2182F, 0.0F, 0.0F));
+
+        return TexturedModelData.of(modelData, 64, 32);
     }
 
     @Override
@@ -65,8 +75,14 @@ public class FennecEntityModel extends AnimalModel<FennecEntity> {
         this.rightFrontLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + 3.1415927F) * 1F * limbDistance;
         this.leftFrontLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * limbDistance;
         this.tail.yaw = MathHelper.cos(limbAngle * 0.6662F) * limbDistance;
-        var tailAngle = (entity.getHealth() / entity.getMaxHealth() * 2 - 1) * (Math.PI / 8);
-        this.tail.pitch = MathHelper.sin((float) tailAngle);
+        // Уши
+        var k = 1f - entity.getHealth() / entity.getMaxHealth();
+        this.rightEar.pitch = -0.2618F * k;
+        this.rightEar.yaw = 0.8727F * k;
+        this.rightEar.roll = -0.2182F * k;
+        this.leftEar.pitch = -0.2618F * k;
+        this.leftEar.yaw = -0.8727F * k;
+        this.leftEar.roll = 0.2182F * k;
     }
 
     @Override
