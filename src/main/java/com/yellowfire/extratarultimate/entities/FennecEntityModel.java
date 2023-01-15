@@ -48,9 +48,9 @@ public class FennecEntityModel extends AnimalModel<FennecEntity> {
 
         ModelPartData right_front_leg = partdefinition.addChild("right_front_leg", ModelPartBuilder.create().uv(56, 0).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-1.75F, 16.0F, -3.0F));
 
-        ModelPartData root = partdefinition.addChild("body", ModelPartBuilder.create().uv(0, 16).cuboid(-3.0F, -10.0F, -5.0F, 6.0F, 6.0F, 10.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+        ModelPartData body = partdefinition.addChild("body", ModelPartBuilder.create().uv(0, 16).cuboid(-3.0F, -10.0F, -5.0F, 6.0F, 6.0F, 10.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 
-        ModelPartData tail = root.addChild("tail", ModelPartBuilder.create().uv(33, 18).cuboid(-2.5F, -2.5F, 0.0F, 5.0F, 5.0F, 9.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -7.5F, 5.0F));
+        ModelPartData tail = body.addChild("tail", ModelPartBuilder.create().uv(33, 18).cuboid(-2.5F, -2.5F, 0.0F, 5.0F, 5.0F, 9.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -7.5F, 5.0F));
 
         return TexturedModelData.of(meshdefinition, 64, 32);
     }
@@ -65,7 +65,8 @@ public class FennecEntityModel extends AnimalModel<FennecEntity> {
         this.rightFrontLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + 3.1415927F) * 1F * limbDistance;
         this.leftFrontLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * limbDistance;
         this.tail.yaw = MathHelper.cos(limbAngle * 0.6662F) * limbDistance;
-        this.tail.pitch = 5 / 180f * MathHelper.PI;
+        var tailAngle = (entity.getHealth() / entity.getMaxHealth() * 2 - 1) * (Math.PI / 8);
+        this.tail.pitch = MathHelper.sin((float) tailAngle);
     }
 
     @Override
