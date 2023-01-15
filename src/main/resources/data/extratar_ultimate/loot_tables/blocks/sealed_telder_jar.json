@@ -641,7 +641,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:stone",
+          "name": "extratar_ultimate:triangle_disc",
           "weight": 1,
           "functions": [
             {
@@ -655,7 +655,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:stone",
+          "name": "extratar_ultimate:yellow_peach_disc",
           "weight": 1,
           "functions": [
             {
@@ -669,7 +669,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:stone",
+          "name": "extratar_ultimate:anchor_chain",
           "weight": 5,
           "functions": [
             {
