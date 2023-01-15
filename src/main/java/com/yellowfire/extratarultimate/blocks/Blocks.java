@@ -498,7 +498,7 @@ public class Blocks {
         registerFlammableBlock(TELDER_FENCE_GATE, "telder_fence_gate");
         registerFlammableBlock(TELDER_DOOR, "telder_door");
         registerFlammableBlock(TELDER_TRAPDOOR, "telder_trapdoor");
-        registerBlock(SEALED_TELDER_JAR, "sealed_telder_jar"); // Изменить лут его
+        registerBlock(SEALED_TELDER_JAR, "sealed_telder_jar");
         TELDER_JAR_ENTITY_TYPE = registerBlockEntity(TELDER_JAR, "telder_jar",
                 FabricBlockEntityTypeBuilder.create(TelderJarBlockEntity::new, TELDER_JAR));
         registerFlammableBlock(TELDER_CHAIR, "telder_chair");
