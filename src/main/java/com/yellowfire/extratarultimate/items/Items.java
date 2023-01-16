@@ -5,11 +5,14 @@ import com.yellowfire.extratarultimate.Sounds;
 import com.yellowfire.extratarultimate.effects.Effects;
 import com.yellowfire.extratarultimate.entities.Entities;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -128,6 +131,11 @@ public class Items {
     public static Item TELDER_STEEL_INGOT = new Item(new FabricItemSettings());
     public static Item TELDER_STEEL_NUGGET = new Item(new FabricItemSettings());
     public static Item TELDER_STEEL_GEAR = new Item(new FabricItemSettings());
+    public static Item TELDER_PICKAXE = new MiningToolItem(0, 1.2f, TelderToolMaterial.TELDER, BlockTags.PICKAXE_MINEABLE, new FabricItemSettings());
+    public static Item TELDER_AXE = new MiningToolItem(6.5f, 1, TelderToolMaterial.TELDER, BlockTags.AXE_MINEABLE, new FabricItemSettings());
+    public static Item TELDER_SWORD = new SwordItem(ToolMaterials.NETHERITE, 3, 1.6f, new FabricItemSettings());
+    public static Item TELDER_SHOVEL = new MiningToolItem(1, 1, TelderToolMaterial.TELDER, BlockTags.SHOVEL_MINEABLE, new FabricItemSettings());
+    public static Item TELDER_HOE = new HoeItem(ToolMaterials.NETHERITE, 1, 4, new FabricItemSettings());
     public static Item TELDER_CLOTH = new ClothItem(new FabricItemSettings());
     public static Item TELDER_MAGIC_CLOTH = new MagicClothItem(new FabricItemSettings());
     public static Item TELDER_FLEECE = new Item(new FabricItemSettings());
@@ -138,7 +146,6 @@ public class Items {
     public static Item YELLOW_PEACH_DISC = new MusicDiscItem(15, Sounds.YELLOW_PEACH_RECORD, new FabricItemSettings().maxCount(1), 3 * 60 + 15);
     public static Item TRIANGLE_DISC = new MusicDiscItem(15, Sounds.TRIANGLE_RECORD, new FabricItemSettings().maxCount(1), 2 * 60 + 54);
     public static Item FENNEC_SPAWN_EGG = new SpawnEggItem(Entities.FENNEC, 0x8a5741, 0xdbd0c2, new FabricItemSettings());
-
 
     public static void register() {
         registerItem(YELLOW_PEACH, "yellow_peach");
@@ -159,6 +166,11 @@ public class Items {
         registerItem(TELDER_STEEL_INGOT, "telder_steel_ingot");
         registerItem(TELDER_STEEL_NUGGET, "telder_steel_nugget");
         registerItem(TELDER_STEEL_GEAR, "telder_steel_gear");
+        registerItem(TELDER_PICKAXE, "telder_pickaxe");
+        registerItem(TELDER_AXE, "telder_axe");
+        registerItem(TELDER_SWORD, "telder_sword");
+        registerItem(TELDER_SHOVEL, "telder_shovel");
+        registerItem(TELDER_HOE, "telder_hoe");
         registerItem(TELDER_CLOTH, "telder_cloth");
         registerItem(TELDER_MAGIC_CLOTH, "telder_magic_cloth");
         registerItem(TELDER_FLEECE, "telder_fleece");
