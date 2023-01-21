@@ -7,6 +7,7 @@ import com.yellowfire.extratarultimate.items.Items;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.server.command.ParticleCommand;
