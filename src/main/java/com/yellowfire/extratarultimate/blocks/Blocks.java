@@ -96,6 +96,14 @@ public class Blocks {
             .strength(2.0F, 6.0F)
     );
 
+    public static Block MECHANICAL_CORE = new Block(FabricBlockSettings.of(Material.METAL)
+            .mapColor(MapColor.BLACK)
+            .sounds(BlockSoundGroup.METAL)
+            .requiresTool()
+            .strength(2.0F, 6.0F)
+            .luminance(10)
+    );
+
     public static Block ETHERSOAKED_STONE = new Block(FabricBlockSettings.of(Material.STONE)
             .mapColor(MapColor.STONE_GRAY)
             .strength(1.5F, 6.0F)
@@ -472,6 +480,7 @@ public class Blocks {
         registerBlock(END_CRYSTAL_BLOCK, "end_crystal_block");
         registerBlock(TELDER_STEEL_BLOCK, "telder_steel_block");
         registerBlock(MECHANICAL_STRUCTURE, "mechanical_structure");
+        registerBlock(MECHANICAL_CORE, "mechanical_core");
         registerBlock(ETHERSOAKED_STONE, "ethersoaked_stone");
         registerBlock(ETHERSOAKED_STONE_STAIRS, "ethersoaked_stone_stairs");
         registerBlock(ETHERSOAKED_STONE_SLAB, "ethersoaked_stone_slab");

@@ -29,7 +29,7 @@ public class YellowlumeBlock extends FlowerBlock {
             if (st.isAir()) {
                 break;
             }
-            world.setBlockState(pos, soakBlock(pos, st));
+            world.setBlockState(pos, soakBlock(st));
             pos = pos.down();
         }
     }
@@ -40,11 +40,11 @@ public class YellowlumeBlock extends FlowerBlock {
                 .toList();
         for (var player : players) {
             world.spawnParticles(
-                    player, ParticleTypes.SOUL_FIRE_FLAME, true, center.x, center.y, center.z, 50, 0.1, 0.1, 0.1, 0);
+                    player, ParticleTypes.TOTEM_OF_UNDYING, true, center.x, center.y, center.z, 50, 0.1, 0.1, 0.1, 0);
         }
     }
 
-    private BlockState soakBlock(BlockPos pos, BlockState state) {
+    private BlockState soakBlock(BlockState state) {
         if (state.getBlock() == Blocks.STONE) {
             return com.yellowfire.extratarultimate.blocks.Blocks.ETHERSOAKED_STONE.getDefaultState();
         }

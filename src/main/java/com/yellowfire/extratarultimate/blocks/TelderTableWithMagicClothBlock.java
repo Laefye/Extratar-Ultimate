@@ -38,7 +38,7 @@ public class TelderTableWithMagicClothBlock extends TelderTableBlock {
                 .toList();
         for (var player : players) {
             world.spawnParticles(
-                    player, ParticleTypes.SOUL_FIRE_FLAME, true, center.x, center.y, center.z, 50, 0.2, 0.1, 0.2, 0);
+                    player, ParticleTypes.TOTEM_OF_UNDYING, true, center.x, center.y, center.z, 50, 0.2, 0.1, 0.2, 0);
         }
     }
 }

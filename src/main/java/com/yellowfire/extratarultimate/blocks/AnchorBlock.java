@@ -135,8 +135,7 @@ public class AnchorBlock extends Block {
             BlockPos lowerBlock = pos.down();
             BlockState lowerBlockState = world.getBlockState(lowerBlock);
             if (lowerBlockState.isOf(state.getBlock()) && lowerBlockState.get(HALF) == DoubleBlockHalf.LOWER) {
-                BlockState newLowerBlockState = Blocks.AIR.getDefaultState();
-                world.setBlockState(lowerBlock, newLowerBlockState, 35);
+                world.setBlockState(lowerBlock, Blocks.AIR.getDefaultState(), 35);
                 world.syncWorldEvent(player, 2001, lowerBlock, Block.getRawIdFromState(lowerBlockState));
             }
         }
