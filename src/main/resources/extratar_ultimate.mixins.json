@@ -11,6 +11,8 @@
     "PlayerEntityMixin"
   ],
   "client": [
+    "ArmorStandRendererMixin",
+    "LivingEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
