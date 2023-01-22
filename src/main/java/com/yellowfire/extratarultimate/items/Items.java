@@ -5,15 +5,12 @@ import com.yellowfire.extratarultimate.Sounds;
 import com.yellowfire.extratarultimate.effects.Effects;
 import com.yellowfire.extratarultimate.entities.Entities;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -144,7 +141,7 @@ public class Items {
     public static Item DIAMOND_PICK = new PickaxeItem(ToolMaterials.DIAMOND, 1, -2.8F, new FabricItemSettings());
     public static Item NETHERITE_PICK = new PickaxeItem(ToolMaterials.NETHERITE, 1, -2.8F, new FabricItemSettings());
     public static Item TELDER_PICK = new PickaxeItem(ToolMaterials.NETHERITE, 1, -2.8F, new FabricItemSettings());
-    public static Item TELDER_STEEL_HELMET = new HelmetWithEars(TelderArmorMaterial.TELDER, new FabricItemSettings());
+    public static Item TELDER_STEEL_HELMET = new HelmetTypeA(TelderArmorMaterial.TELDER, new FabricItemSettings());
     public static Item TELDER_STEEL_CHESTPLATE = new ArmorItem(TelderArmorMaterial.TELDER, EquipmentSlot.CHEST, new FabricItemSettings());
     public static Item TELDER_STEEL_LEGGINGS = new ArmorItem(TelderArmorMaterial.TELDER, EquipmentSlot.LEGS, new FabricItemSettings());
     public static Item TELDER_STEEL_BOOTS = new ArmorItem(TelderArmorMaterial.TELDER, EquipmentSlot.FEET, new FabricItemSettings());
