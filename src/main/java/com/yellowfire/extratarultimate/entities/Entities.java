@@ -1,19 +1,17 @@
 package com.yellowfire.extratarultimate.entities;
 
 import com.yellowfire.extratarultimate.ExtratarUltimate;
+import com.yellowfire.extratarultimate.client.models.FennecEntityModel;
+import com.yellowfire.extratarultimate.client.renderers.FennecEntityRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-
-import java.util.function.Function;
 
 public class Entities {
     public static EntityType<FennecEntity> FENNEC = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FennecEntity::new)

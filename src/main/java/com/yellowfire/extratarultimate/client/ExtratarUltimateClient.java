@@ -3,19 +3,14 @@ package com.yellowfire.extratarultimate.client;
 import com.yellowfire.extratarultimate.ExtratarUltimate;
 import com.yellowfire.extratarultimate.blocks.Blocks;
 import com.yellowfire.extratarultimate.entities.Entities;
-import com.yellowfire.extratarultimate.entities.FennecEntityModel;
-import com.yellowfire.extratarultimate.entities.FennecEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.registry.Registries;
 
 @Environment(EnvType.CLIENT)

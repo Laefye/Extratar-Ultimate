@@ -1,10 +1,8 @@
-package com.yellowfire.extratarultimate.mixin;
+package com.yellowfire.extratarultimate.mixin.client;
 
-import com.yellowfire.extratarultimate.entities.HelmetFeatureRenderer;
+import com.yellowfire.extratarultimate.client.renderers.HelmetFeatureRenderer;
 import net.minecraft.client.render.entity.ArmorStandEntityRenderer;
-import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.ArmorStandArmorEntityModel;
 import net.minecraft.entity.decoration.ArmorStandEntity;
@@ -28,6 +26,8 @@ public class ArmorStandRendererMixin extends LivingEntityRendererMixin<ArmorStan
 
     @Inject(method = "<init>(Lnet/minecraft/client/render/entity/EntityRendererFactory$Context;)V", at=@At("TAIL"))
     private void constructor(EntityRendererFactory.Context context, CallbackInfo ci) {
-        this.addFeature(new HelmetFeatureRenderer<>((FeatureRendererContext<ArmorStandEntity, ArmorStandArmorEntityModel>) this));
+        this.addFeature(
+                new HelmetFeatureRenderer<>((FeatureRendererContext<ArmorStandEntity, ArmorStandArmorEntityModel>) this)
+        );
     }
 }

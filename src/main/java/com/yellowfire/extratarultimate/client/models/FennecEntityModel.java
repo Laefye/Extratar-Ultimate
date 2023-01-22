@@ -1,12 +1,11 @@
-package com.yellowfire.extratarultimate.entities;
+package com.yellowfire.extratarultimate.client.models;
 
 import com.google.common.collect.ImmutableList;
-import com.yellowfire.extratarultimate.ExtratarUltimate;
+import com.yellowfire.extratarultimate.entities.FennecEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.*;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.util.math.MathHelper;
 
 public class FennecEntityModel extends AnimalModel<FennecEntity> {

@@ -1,7 +1,8 @@
-package com.yellowfire.extratarultimate.entities;
+package com.yellowfire.extratarultimate.client.renderers;
 
 import com.yellowfire.extratarultimate.ExtratarUltimate;
-import com.yellowfire.extratarultimate.client.ExtratarUltimateClient;
+import com.yellowfire.extratarultimate.entities.FennecEntity;
+import com.yellowfire.extratarultimate.client.models.FennecEntityModel;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;

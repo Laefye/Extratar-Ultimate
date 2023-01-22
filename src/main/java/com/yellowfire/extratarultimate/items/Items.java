@@ -144,7 +144,7 @@ public class Items {
     public static Item DIAMOND_PICK = new PickaxeItem(ToolMaterials.DIAMOND, 1, -2.8F, new FabricItemSettings());
     public static Item NETHERITE_PICK = new PickaxeItem(ToolMaterials.NETHERITE, 1, -2.8F, new FabricItemSettings());
     public static Item TELDER_PICK = new PickaxeItem(ToolMaterials.NETHERITE, 1, -2.8F, new FabricItemSettings());
-    public static Item TELDER_STEEL_HELMET = new ArmorItem(TelderArmorMaterial.TELDER, EquipmentSlot.HEAD, new FabricItemSettings());
+    public static Item TELDER_STEEL_HELMET = new HelmetWithEars(TelderArmorMaterial.TELDER, new FabricItemSettings());
     public static Item TELDER_STEEL_CHESTPLATE = new ArmorItem(TelderArmorMaterial.TELDER, EquipmentSlot.CHEST, new FabricItemSettings());
     public static Item TELDER_STEEL_LEGGINGS = new ArmorItem(TelderArmorMaterial.TELDER, EquipmentSlot.LEGS, new FabricItemSettings());
     public static Item TELDER_STEEL_BOOTS = new ArmorItem(TelderArmorMaterial.TELDER, EquipmentSlot.FEET, new FabricItemSettings());
