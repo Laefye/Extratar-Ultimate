@@ -13,6 +13,10 @@ public class HelmetModels {
 
         ModelPartData FaceRight_r1 = helmet.addChild("FaceRight_r1", ModelPartBuilder.create().uv(0, 16).cuboid(0.0F, -5.0F, -5.0F, 0.0F, 10.0F, 5.0F, new Dilation(0.0F)), ModelTransform.of(-4.0F, -3.0F, -4.0F, 0.0F, -0.925F, 0.0F));
 
+        ModelPartData EarLeft_r1 = helmet.addChild("EarLeft_r1", ModelPartBuilder.create().uv(0, 23).cuboid(0.0F, -4.0F, 0.0F, 0.0F, 6.0F, 8.0F, new Dilation(0.0F)), ModelTransform.of(4.0F, -5.0F, 1.0F, 0.0F, 0.1745F, 0.0F));
+
+        ModelPartData EarRight_r1 = helmet.addChild("EarRight_r1", ModelPartBuilder.create().uv(0, 23).cuboid(0.0F, -4.0F, 0.0F, 0.0F, 6.0F, 8.0F, new Dilation(0.0F)), ModelTransform.of(-4.0F, -5.0F, 1.0F, 0.0F, -0.2618F, 0.0F));
+
         return TexturedModelData.of(modelData, 64, 64);
     }
 }
